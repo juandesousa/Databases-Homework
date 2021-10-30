@@ -80,14 +80,19 @@ location VARCHAR(30) NOT NULL
 
 8. Insert a few classes in the `classes` table
 
-INSERT INTO classes (leadingmentor, topic, date, location) VALUES ('Peter Love', 'JavaScript', '2021/06/05', 'USA');
+INSERT INTO classes (leadingmentor, topic, date, location) VALUES ('Peter Love', 'JavaScript', '2021/05/05', 'USA');
 INSERT INTO classes (leadingmentor, topic, date, location) VALUES ('Mary Simm', 'React', '2021/07/05', 'Spain');
 INSERT INTO classes (leadingmentor, topic, date, location) VALUES ('Susan Glow', 'Node', '2021/08/05', 'UK');
+INSERT INTO classes (leadingmentor, topic, date, location) VALUES ('Juan Love', 'JavaScript', '2021/05/05', 'USA');
 
 9. We now want to store who among the students attends a specific class. How would you store that? Come up with a solution and insert some data if you model this as a new table.
 10. Answer the following questions using a `select` SQL statement:
     - Retrieve all the mentors who lived more than 5 years in Glasgow
+    SELECT * FROM mentors WHERE yearsinglasgow > 5;
     - Retrieve all the mentors whose favourite language is Javascript
+    SELECT * FROM mentors WHERE favprogramlanguage = 'JavaScript';
     - Retrieve all the students who are CYF graduates
+    SELECT * FROM students WHERE graduated = 'true';
     - Retrieve all the classes taught before June this year
+    SELECT * FROM classes WHERE date < '2021-06-01';
     - Retrieve all the students (retrieving student ids only is fine) who attended the Javascript class (or any other class that you have in the `classes` table).

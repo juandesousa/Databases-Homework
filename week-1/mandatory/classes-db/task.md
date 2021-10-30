@@ -86,6 +86,17 @@ INSERT INTO classes (leadingmentor, topic, date, location) VALUES ('Susan Glow',
 INSERT INTO classes (leadingmentor, topic, date, location) VALUES ('Juan Love', 'JavaScript', '2021/05/05', 'USA');
 
 9. We now want to store who among the students attends a specific class. How would you store that? Come up with a solution and insert some data if you model this as a new table.
+
+CREATE TABLE classes_attends (
+	student_id INT REFERENCES students(id),
+	class_id INT REFERENCES classes(id),
+	class_date DATE REFERENCES classes(specific_date)
+);
+
+INSERT INTO classes_attends (student_id, class_id, class_date) VALUES (1, 3, '2021/08/05');
+INSERT INTO classes_attends (student_id, class_id, class_date) VALUES (2, 2, '2021/07/05');
+INSERT INTO classes_attends (student_id, class_id, class_date) VALUES (3, 1, '2021/05/05');
+
 10. Answer the following questions using a `select` SQL statement:
     - Retrieve all the mentors who lived more than 5 years in Glasgow
     SELECT * FROM mentors WHERE yearsinglasgow > 5;
@@ -96,3 +107,4 @@ INSERT INTO classes (leadingmentor, topic, date, location) VALUES ('Juan Love', 
     - Retrieve all the classes taught before June this year
     SELECT * FROM classes WHERE date < '2021-06-01';
     - Retrieve all the students (retrieving student ids only is fine) who attended the Javascript class (or any other class that you have in the `classes` table).
+    SELECT student_id, class_id FROM classes_attends WHERE class_id = 1;
